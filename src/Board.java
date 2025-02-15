@@ -9,7 +9,7 @@ public class Board {
         this.boardSlots = new String[]{ "0", "1", "2" , "3", "4", "5" , "6" , "7", "8" };
     }
 
-    public void printBoard() {
+    private void printBoard() {
         System.out.printf("""
                 %s | %s | %s
                 %s | %s | %s
@@ -29,7 +29,7 @@ public class Board {
         } while (!gameWon() && !gameDraw());
     }
 
-    public void setSlots(String pos, String setTo) {
+    private void setSlots(String pos, String setTo) {
         try {
             this.boardSlots[Integer.parseInt(pos)] = setTo;
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
@@ -37,7 +37,7 @@ public class Board {
         }
     }
 
-    public void setSlot(int choice) {
+    private void setSlot(int choice) {
             try {
                 if (checkPlayer().equals("p1")) {
                     checkSlot(choice);
@@ -53,7 +53,7 @@ public class Board {
             }
     }
 
-    public void checkSlot(int choice) {
+    private void checkSlot(int choice) {
         if (boardSlots[choice].equals("O") || boardSlots[choice].equals("X")) {
             throw new IllegalArgumentException();
         }
@@ -99,12 +99,12 @@ public class Board {
         return false;
     }
 
-    public String checkPlayer() {
+    private String checkPlayer() {
         return this.player;
     }
 
 
-    public void swapPlayer() {
+    private void swapPlayer() {
         if (checkPlayer().equals("p1")) {
             this.player = "p2";
         } else {
